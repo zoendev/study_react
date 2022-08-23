@@ -10,22 +10,20 @@
 
     <script type="text/babel">
         const root = document.getElementById('root')
-        let counter = 0
-        function countUp(){
-            counter = counter + 1
-        // 값이 바뀔 때마다 UI를 다시 render 해줘야 함 Not good way
-            render()
-        }
-        function render() {
-            ReactDOM.render(<Container />, root)
-        }
-        const Container = () => (
-            <div>
-                <h3>Total Clicks : {counter}</h3>
-                <button onClick={countUp}>Click me</button>
-            </div>
-            )
+        function App() {
+            const [counter, setCounter] = React.useState(0)
+            const onClick = () => {
+                setCounter(counter + 1)
+            }
 
-        render()
+            return (
+                <div>
+                    <h3>Total Clicks : {counter}</h3>
+                    <button onClick={onClick}>Click me</button>
+                </div>
+            )
+        }
+  
+        ReactDOM.render(<App/>, root)
     </script>
 </html>
